@@ -19,10 +19,9 @@
                    <TextField fx:id="portNameField" layoutX="14.0" layoutY="14.0" promptText="Port Name" />
                    <TextField fx:id="portCodeField" layoutX="14.0" layoutY="54.0" promptText=" Port Code" />
                    <TextField fx:id="countryField" layoutX="14.0" layoutY="94.0" promptText="County" />
-
-                   <TextField fx:id="portTextArea" layoutX="284.0" layoutY="6.0" prefHeight="200.0" prefWidth="300.0" />
                   <Button fx:id="addButton" layoutX="57.0" layoutY="137.0" mnemonicParsing="false" onAction="#addPort" text="Add port" />
                   <Button fx:id="deleteButton" layoutX="51.0" layoutY="181.0" mnemonicParsing="false" onAction="#deletePort" text="Delete port" />
+                  <TextArea fx:id="portTextArea" layoutX="199.0" layoutY="7.0" prefHeight="200.0" prefWidth="200.0" />
 
                </children></AnchorPane>
       </content>
@@ -36,10 +35,10 @@
                   <TextField fx:id="ShipIdentifierField" layoutX="14.0" layoutY="84.0" promptText="Ship Identifier" />
                   <TextField fx:id="photographUrlField" layoutX="14.0" layoutY="170.0" promptText="Photograph URL" />
                   <Button fx:id="addShipButton" layoutX="37.0" layoutY="217.0" mnemonicParsing="false" onAction="#addShip" text="Add Ship" />
-                  <ChoiceBox fx:id="portChoice" layoutX="434.0" layoutY="170.0" prefWidth="150.0" />
+                  <ChoiceBox fx:id="portChoice" layoutX="436.0" layoutY="97.0" prefWidth="150.0" />
                   <ChoiceBox fx:id="shipStatusChoice" layoutX="434.0" layoutY="53.0" prefWidth="150.0" />
                   <TextArea fx:id="shipListTextArea" layoutX="187.0" layoutY="37.0" prefHeight="200.0" prefWidth="200.0" />
-                  <Button fx:id="refreshButton" layoutX="483.0" layoutY="217.0" mnemonicParsing="false" onAction="#initialize" text="refresh " />
+                  <Button fx:id="refreshButton" layoutX="481.0" layoutY="150.0" mnemonicParsing="false" onAction="#initialize" text="refresh " />
                </children></AnchorPane>
       </content>
     </TitledPane>
@@ -63,7 +62,17 @@
     </TitledPane>
       <TitledPane animated="false" layoutX="10.0" layoutY="60.0" text="pallets">
          <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="AddPaletteButton" layoutX="14.0" layoutY="222.0" mnemonicParsing="false" onAction="#addPallete" text="Add palette" />
+                  <TextField fx:id="goodsDescriptionField" layoutX="14.0" layoutY="23.0" promptText="Goods description" />
+                  <TextField fx:id="totalWeightField" layoutX="14.0" layoutY="64.0" promptText="Weight" />
+                  <TextField fx:id="totalSizeField" layoutX="14.0" layoutY="99.0" promptText="Size" />
+                  <TextField fx:id="quantityField" layoutX="14.0" layoutY="137.0" promptText="Quantity" />
+                  <TextField fx:id="unitValueField" layoutX="14.0" layoutY="173.0" promptText="Unit Value" />
+                  <Button fx:id="DeletePaletteButton" layoutX="118.0" layoutY="222.0" mnemonicParsing="false" onAction="#deletePallet" text="Delete palette" />
+                  <ChoiceBox fx:id="containerChoiceBox" layoutX="209.0" layoutY="23.0" prefWidth="150.0" />
+               </children></AnchorPane>
          </content>
       </TitledPane>
       <TitledPane animated="false" layoutX="10.0" layoutY="385.0" text="Goods">

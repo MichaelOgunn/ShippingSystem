@@ -57,6 +57,10 @@ public class MenuController {
     private Button deleteContainerButton;
     @FXML
     private Button refreshButton;
+    @FXML
+    private Button AddPaletteButton;
+    @FXML
+    private Button DeletePaletteButton;
 
     @FXML
     private Button addButton;
@@ -64,6 +68,8 @@ public class MenuController {
     private Button deleteButton;
     @FXML
     private Button addShipButton;
+
+
     @FXML
     private ChoiceBox<String> shipStatusChoice;
     @FXML
@@ -325,6 +331,8 @@ public class MenuController {
      */
     private void initializePortChoice(ChoiceBox<String> portChoice, ChoiceBox<String> portChoice1) {
 
+        // The above code is declaring a variable named "portNames" of type List<String> and assigning it the value
+        // returned by the method "getPortNamesFromList()".
         List<String> portNames = getPortNamesFromList();
         portChoice.getItems().clear();
         portChoice1.getItems().clear();
@@ -353,7 +361,15 @@ public class MenuController {
             System.out.println("ListOfShips is empty. listOfShips will not be populated.");
         }
     }
-    public void initializeContainer(ChoiceBox<String> container){
+    public void initializeContainer(ChoiceBox<String> listOfContainers){
+        List<String> containerNumbers = getContainerNumbers();
+        listOfContainers.getItems().clear();
+        if(!containerList.isEmpty()){
+            listOfContainers.getItems().addAll(containerNumbers);
+            System.out.println("ListOfContainers items added successfully");
+        }else{
+            System.out.println("ListOfContainers is empty. listOfContainers will not be populated");
+        }
 
     }
     public List<String> getShipNames(){
@@ -376,12 +392,19 @@ public class MenuController {
             current = current.next;
         }
         return portNames;
-
+    }
+    public List<String> getContainerNumbers() {
+        List<String> containerNumbers = new LinkedList<>();
+        GenList<Container>.GenNode<Container> current = containerList.first;
+        while (current != null) {
+            Container container = current.getData();
+            containerNumbers.add(container.getContainerNumber());
+            current = current.next;
+        }
+        return containerNumbers;
     }
 
-//    public void refreshPortList(ActionEvent event){
-//        listPorts()
-//    }
+
 
 
 

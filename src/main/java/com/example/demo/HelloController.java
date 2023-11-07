@@ -37,6 +37,9 @@ public class HelloController {
             Stage stage = (Stage) getStarted.getScene().getWindow();
             stage.setScene(nextScene);
             stage.show();
+        // The `catch (Exception e)` block is used to catch any exceptions that may occur during the execution of the code
+        // within the `try` block. If an exception occurs, the `e.printStackTrace()` statement is called, which prints the
+        // stack trace of the exception to the console. This helps in debugging and identifying the cause of the exception.
         } catch (Exception e) {
             e.printStackTrace();
         }
