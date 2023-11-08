@@ -19,7 +19,7 @@ public class MenuController {
     @FXML
     private TextField portNameField;
     @FXML
-    private TextField portTextArea;
+    private TextArea portTextArea;
     @FXML
     private TextField portCodeField;
     @FXML
@@ -28,6 +28,10 @@ public class MenuController {
      private TextField ShipNameField;
      @FXML
      private TextField ShipIdentifierField;
+     @FXML
+     private TextField ShipIdentifierFieldFind;
+     @FXML
+     private TextField containerNumberFieldFind;
      @FXML
      private TextField flagStateField;
      @FXML
@@ -55,8 +59,7 @@ public class MenuController {
     private Button addContainerButton;
     @FXML
     private Button deleteContainerButton;
-    @FXML
-    private Button refreshButton;
+
     @FXML
     private Button AddPaletteButton;
     @FXML
@@ -68,6 +71,10 @@ public class MenuController {
     private Button deleteButton;
     @FXML
     private Button addShipButton;
+    @FXML
+    private Button load;
+    @FXML
+    private Button unLoad;
 
 
     @FXML
@@ -79,7 +86,7 @@ public class MenuController {
     @FXML
     private ChoiceBox<String> portChoice1;
     @FXML
-    private ChoiceBox<String> containerChoiceBox;
+    private ChoiceBox<String> listOfContainers;
 
     @FXML
     private RadioButton shipOrPort;
@@ -305,7 +312,7 @@ public class MenuController {
         int quantity = Integer.parseInt(unitValueField.getText());
         int unitValue = Integer.parseInt(unitValueField.getText());
         Pallet goods = new Pallet(goodsDescription,weight,size,quantity,unitValue);
-        String selectedContainer = containerChoiceBox.getValue();
+        String selectedContainer = listOfContainers.getValue();
         if (selectedContainer != null){
             Container container= findContainerByNumber(selectedContainer);
             container.addPallet(goods);
@@ -324,6 +331,7 @@ public class MenuController {
         initializeShipStatusChoice(shipStatusChoice);
         initializePortChoice(portChoice,portChoice1);
         initializeListOfShips(listOfShip);
+        initializeContainer(listOfContainers);
     }
 
     /**
@@ -402,6 +410,58 @@ public class MenuController {
             current = current.next;
         }
         return containerNumbers;
+    }
+    public void loadContainer(ActionEvent event) {
+        String shipIdentifier = ShipIdentifierFieldFind.getText();
+        String containerNumber = containerNumberFieldFind.getText();
+
+        ContainerShip shipToUnload = findShipOnSea(shipIdentifier);
+        Container containerToLoad = findContainerByNumber(containerNumber);
+
+        if (shipToUnload != null && containerToLoad != null) {
+            shipToUnload.loadContainer(containerToLoad);
+
+            Port port = shipToUnload.getCurrentPort();
+            if (port !=null) {
+                port.removeContainerFromOnShore(containerToLoad);
+            }
+            shipListTextArea.setText(listShip());
+            containerListTextArea.setText(listContainer());
+            showMessage("Container loaded onto the ship successfully.");
+        }else {
+            showMessage("Container not loaded, Container or ship not found");
+        }
+    }
+    public void unloadContainer(ActionEvent event) {
+        String shipIdentifier = ShipIdentifierFieldFind.getText();
+        String containerNumber = containerNumberFieldFind.getText();
+
+        ContainerShip shipToLoad = findShipOnSea(shipIdentifier);
+        Container containerToUnload = findContainerByNumber(containerNumber);
+
+        if (shipToLoad != null && containerToUnload != null) {
+            shipToLoad.unloadContainer(containerToUnload);
+
+            Port port = shipToLoad.getCurrentPort();
+            if (port !=null) {
+                port.removeContainerFromOnShore(containerToUnload);
+            }
+            shipListTextArea.setText(listShip());
+            containerListTextArea.setText(listContainer());
+            showMessage("Container Unloaded From the ship successfully.");
+        }else {
+            showMessage("Container not Unloaded, Container or ship not found");
+        }
+    }
+
+    public void showMessage(String message) {
+        // The above code is creating an instance of the Alert class and setting its type to INFORMATION.
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+
+        alert.showAndWait();
     }
 
 

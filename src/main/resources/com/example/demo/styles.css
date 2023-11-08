@@ -1,0 +1,64 @@
+/* Base colors for the professional color scheme */
+.base-light {
+    -fx-base: #3498DB; /* Light blue */
+}
+
+.base-dark {
+    -fx-base: #2980B9; /* Dark blue */
+}
+
+/* Styling for Accordions */
+.accordion {
+    -fx-border-color: #3498DB; /* Dark blue border color for the Accordion */
+}
+
+.titled-pane {
+    -fx-text-fill: #3498DB; /* Dark blue text color for TitledPane headers */
+}
+
+/* Styling for AnchorPanes */
+.anchor-pane {
+    -fx-background-color: #ECF0F1; /* Light gray background color for AnchorPane */
+}
+
+/* Styling for Buttons */
+.button {
+    -fx-background-color: #3498DB; /* Dark blue background color for buttons */
+    -fx-text-fill: white; /* White text color for buttons */
+}
+
+/* Styling for TextFields */
+.text-field {
+    -fx-background-color: #D5DBDB; /* Light gray background for TextFields */
+}
+
+/* Styling for ChoiceBoxes */
+.choice-box {
+    -fx-background-color: #D5DBDB; /* Light gray background for ChoiceBoxes */
+}
+
+/* Styling for Tabs and TabPanes */
+.tab-pane {
+    -fx-background-color: #ECF0F1; /* Light gray background color for TabPane */
+}
+
+.tab {
+    -fx-background-color: #3498DB; /* Dark blue background color for tabs */
+    -fx-text-fill: white; /* White text color for tabs */
+}
+
+/* Styling for TextArea */
+.text-area {
+    -fx-background-color: #D5DBDB; /* Light gray background for TextArea */
+}
+
+/* Styling for RadioButton */
+.radio-button {
+    -fx-text-fill: #3498DB; /* Dark blue text color for RadioButtons */
+}
+
+/* Styling for ChoiceBox arrows */
+.choice-box .arrow-button {
+    -fx-background-color: #3498DB; /* Dark blue color for ChoiceBox arrows */
+    -fx-shape: "M0,0 L10,0 L5,7 L0,0";
+}

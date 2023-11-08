@@ -35,6 +35,7 @@ public class HelloController {
             Scene nextScene = new Scene(root);
 
             Stage stage = (Stage) getStarted.getScene().getWindow();
+
             stage.setScene(nextScene);
             stage.show();
         // The `catch (Exception e)` block is used to catch any exceptions that may occur during the execution of the code
