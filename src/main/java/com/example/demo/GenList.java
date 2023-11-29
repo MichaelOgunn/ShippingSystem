@@ -1,11 +1,16 @@
 package com.example.demo;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
 import javafx.collections.ObservableList;
-
+@XStreamAlias("GenList")
 public class GenList<O> {
 
+    public GenNode<O> getFirst(){
+        return first;
+    }
     GenNode<O> first = null;
     public int size;
+//    public ge
 
     public boolean isEmpty() {
         return first == null; // Return true if the list is empty
@@ -36,6 +41,16 @@ public class GenList<O> {
     public void reset() {
         first = null;
     }
+    public boolean contains(O item) {
+        GenNode<O> current = first;
+        while (current != null) {
+            if (current.data.equals(item)) {
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
+    }
 
 
 
@@ -50,6 +65,9 @@ public class GenList<O> {
 
         public N getData() {
             return data;
+        }
+        public GenNode<N> getNext() {
+            return next;
         }
     }
     public void remove(O item) {
@@ -74,8 +92,13 @@ public class GenList<O> {
         size--;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "GenList{" +
+                "first=" + first +
+                ", size=" + size +
+                '}';
+    }
 }
 
 

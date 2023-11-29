@@ -5,7 +5,7 @@ import com.example.demo.GenList;
 public class Container {
     public String containerNumber;
     public int containerSize;
-    public GenList<Pallet> pallets;
+    private GenList<Pallet> pallets;
 
 
     public Container(String containerNumber, int containerSize) {
@@ -41,4 +41,41 @@ public class Container {
         return pallets;
     }
 
+    @Override
+    public String toString() {
+        return "Container{" +
+                "containerNumber='" + containerNumber + '\'' +
+                ", containerSize=" + containerSize +
+                ", pallets=" + pallets +
+                '}';
+    }
+
+    public double capacity() {
+        double weight = 0.0;
+        GenList<Pallet>.GenNode<Pallet> current = pallets.getFirst();
+        while (current != null) {
+            weight += current.getData().getWeight();
+
+            current= current.getNext();
+        }
+        return containerSize - weight;
+    }
+    public boolean canAccomodate(Pallet pallet ) {
+        return capacity() >= pallet.getWeight();
+    }
+
+    public double value() {
+        double totalValue = 0.0;
+        int totalQuantity = 0;
+        GenList<Pallet>.GenNode<Pallet> current = pallets.getFirst();
+        while (current != null) {
+            totalValue += current.getData().getUnitValue() * current.getData().getQuantity();
+            totalQuantity += current.getData().getQuantity();
+            current = current.getNext();
+        }
+        if (totalQuantity == 0){
+            return 0.0;
+        }
+        return totalValue / totalQuantity;
+    }
 }

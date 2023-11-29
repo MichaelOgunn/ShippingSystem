@@ -34,6 +34,8 @@ public class HelloController {
             Parent root = loader.load();
             Scene nextScene = new Scene(root);
 
+            // The line `Stage stage = (Stage) getStarted.getScene().getWindow();` is retrieving the stage (window) that
+            // contains the `getStarted` button.
             Stage stage = (Stage) getStarted.getScene().getWindow();
 
             stage.setScene(nextScene);

@@ -3,12 +3,15 @@ package model;
 //import com.example.demo.Container;
 import com.example.demo.GenList;
 
+import java.util.Objects;
+
 public class ContainerShip {
     private String ShipName;
     private String ShipIdentifier;
     private  String flagState;
     private String photographUrl;
     private Port currentPort;
+
     private GenList<Container> containersOnShip;
 
 
@@ -60,12 +63,17 @@ public class ContainerShip {
     public Port  getCurrentPort() {
         return currentPort;
     }
+    public String getPortName(){
+        // The line `return (currentPort != null) ? currentPort.getPortName() : null;` is a ternary operator that checks if
+        // the `currentPort` variable is not null.
+        return (currentPort != null) ? currentPort.getPortName() : null;
+    }
 
     public void dockAtPort(Port port) {
         currentPort = port;
     }
 
-    public void launchAtSea(){
+    public void launchAtSea() {
         currentPort = null;
     }
     // Load a container onto the ship
@@ -82,5 +90,37 @@ public class ContainerShip {
     public void addContainer(Container containerOnShip) {
         containersOnShip.add(containerOnShip);
 
+    }
+    public String getLocationStatus() {
+        // The line `return (currentPort != null) ? "In Port" : "At Sea";` is a ternary operator that checks if the
+        // `currentPort` variable is not null.
+        return (currentPort != null) ? "In Port" : "At Sea";
+    }
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        ContainerShip otherShip = (ContainerShip) obj;
+        return Objects.equals(this.ShipName, otherShip.ShipName) &&
+                Objects.equals(this.ShipIdentifier, otherShip.ShipIdentifier);
+    }
+
+
+    @Override
+    public String toString() {
+        return "ContainerShip{" +
+                "ShipName='" + ShipName + '\'' +
+                ", ShipIdentifier='" + ShipIdentifier + '\'' +
+                ", flagState='" + flagState + '\'' +
+                ", photographUrl='" + photographUrl + '\'' +
+                ", currentPort=" + currentPort +
+//                ", containersOnShip=" + containersOnShip +
+                '}';
     }
 }
