@@ -2,6 +2,7 @@
 The CA exercise aims at creating a Java shipping management system that heavily utilizes custom-built internal data structures. The system should enable users to manage a fleet of container ships, whether at sea or docked at numerous ports.
 All ports can handle many container ships. Each container ship can hold many containers. Every container can be aboard a ship or “on shore” at a port.
 Each container holds many pallets. A pallet holds one product. To summarize, commodities must be stored on a pallet, the pallet in a container, the container on a ship, and the ship either docked or at sea.
+
 ![image](https://github.com/michaelo223/ShippingSystem/assets/91596967/55027003-a000-4596-97dd-90bca24948b8)
 ![image](https://github.com/michaelo223/ShippingSystem/assets/91596967/4331b8df-1813-4e06-8233-13d064c6cc95)
 
